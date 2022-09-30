@@ -19,5 +19,25 @@ configMapGenerator:
     - configs/argocd/resource.customizations.health.networking.k8s.io_Ingress
     - configs/argocd/application.instanceLabelKey
 
+- name: argocd-notifications-cm
+  behavior: merge
+  files:
+    - configs/argocd-notifications/trigger.on-deployed
+    - configs/argocd-notifications/trigger.on-sync-running
+    - configs/argocd-notifications/template.app-deployed
+    - configs/argocd-notifications/template.app-sync-status-unknown
+    - configs/argocd-notifications/trigger.on-sync-status-unknown
+    - configs/argocd-notifications/template.app-sync-succeeded
+    - configs/argocd-notifications/trigger.on-created
+    - configs/argocd-notifications/trigger.on-deleted
+    - configs/argocd-notifications/trigger.on-sync-failed
+    - configs/argocd-notifications/template.app-sync-running
+    - configs/argocd-notifications/trigger.on-health-degraded
+    - configs/argocd-notifications/trigger.on-sync-succeeded
+    - configs/argocd-notifications/template.app-created
+    - configs/argocd-notifications/template.app-deleted
+    - configs/argocd-notifications/template.app-health-degraded
+    - configs/argocd-notifications/template.app-sync-failed
+
 generatorOptions:
   disableNameSuffixHash: true
