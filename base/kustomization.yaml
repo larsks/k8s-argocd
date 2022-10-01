@@ -7,6 +7,12 @@ resources:
 - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 - projects/default.yaml
 
+patches:
+  - path: clusterroles/argocd-server_patch.yaml
+    target:
+      kind: ClusterRole
+      name: argocd-server
+
 configMapGenerator:
 - name: argocd-cmd-params-cm
   behavior: merge
@@ -18,6 +24,7 @@ configMapGenerator:
   files:
     - configs/argocd/resource.customizations.health.networking.k8s.io_Ingress
     - configs/argocd/application.instanceLabelKey
+    - configs/argocd/exec.enabled
 
 - name: argocd-notifications-cm
   behavior: merge
